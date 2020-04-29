@@ -76,6 +76,8 @@ function CreateAccountFunction(e){
   console.log('email', email); 
   console.log("password", password);
 
+}
+
 //Login
 function LoginFunction(e){
   e.preventDefault(); 
@@ -116,6 +118,6 @@ if (loading) return null;
 
     </div>
   );
-}}
+}
 
 export default App;
