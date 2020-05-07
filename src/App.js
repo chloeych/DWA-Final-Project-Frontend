@@ -9,6 +9,7 @@ import CreateAccount from './pages/CreateAccount.js';
 import Dashboard from  './pages/Dashboard.js'; 
 import Login from './pages/Login.js'; 
 import UserProfile from './pages/UserProfile.js';
+import SinglePost from './pages/SinglePost.js';
 
 //import components 
 import Header from './components/Header.js';
@@ -118,8 +119,13 @@ if (loading) return null;
     <div className="App">
       <Header LogoutFunction={LogoutFunction} isLoggedIn={loggedIn}/>
       <Router>
+
         <Route exact path="/">
          {!loggedIn ? <Redirect to="/login"/> : <Dashboard userInformation={userInformation}/>}
+        </Route>
+
+        <Route exact path="/post/:id">
+         {!loggedIn ? <Redirect to="/login"/> : <SinglePost/>}
         </Route>
 
         <Route exact path="/login">

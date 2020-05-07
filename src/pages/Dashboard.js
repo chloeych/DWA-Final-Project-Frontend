@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios'; 
 
+//Components 
+import CreatePostForm from '../components/CreatePostForm.js';
+
 function Dashboard({ userInformation }) {
     console.log("userInformation", userInformation); 
     const [allPosts, setAllPosts] = useState([]);
@@ -25,6 +28,11 @@ function Dashboard({ userInformation }) {
 
     }, []);
 
+    function CreatePostFunction(e){
+        e.preventDefault();
+        console.log(e);
+    }
+
     return(
         <div className="Wrapper">
             <h1>Dashboard</h1>
@@ -35,6 +43,8 @@ function Dashboard({ userInformation }) {
                  <p key={i}>{post.text}</p>
              ))}
             </div>
+            <h2>Create Post</h2>
+            <CreatePostForm CreatePostFunction={CreatePostFunction}/>
         </div>
     );
 }
