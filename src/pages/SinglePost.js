@@ -7,7 +7,8 @@ function SinglePost(){
     const [postData, setPostData] = useState({});
     const { id } = useParams();  
     console.log("id", id);
-
+    console.log("postData", postData);
+    
     useEffect(() => {
         axios  
             .get(
@@ -29,9 +30,10 @@ function SinglePost(){
     return(
         <div className="SinglePost Wrapper">
             <h2>Post</h2>
+            <img src={postData.image} alt={postData.id}></img>
             <p>{postData.text}</p>
         </div>
     )
 }
 
-export default SinglePost
+export default SinglePost;

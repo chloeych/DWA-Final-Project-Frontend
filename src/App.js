@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
+import axios from 'axios';
 import {Route, BrowserRouter as Router, Redirect} from 'react-router-dom';
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/storage";
 
 //import pages
 import CreateAccount from './pages/CreateAccount.js'; 
@@ -44,6 +45,8 @@ useEffect(()=>{
  .catch(function(e) {
    console.log("AUTH ERROR",e);
  });
+
+
 }, [firebaseConfig]);
 
 useEffect(()=> {
@@ -113,6 +116,46 @@ function CreateAccountFunction(e){
      });
   }
 
+function createPostWithImage(e){
+  e.preventDefault();
+   // IMG upload and access to firebase
+   const storageRef = firebase.storage().ref();
+   const fileReference = e.currentTarget.postImage.files[0];
+   const uploadTask = storageRef
+    .child(`${fileReference.name}`) 
+    .put(fileReference);
+
+
+    let text = e.currentTarget.postText.value; 
+    const idFromText = text.replace(/\s+/g, "-").toLowerCase().substr(0, 16);
+    let userId = userInformation.uid;
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {console.log("snapshot", snapshot)}, 
+      (error) => {console.log(error);},
+      () => {
+         uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
+           console.log("file available at", downloadURL)
+
+           axios  
+           .get(
+            //local:
+            `http://localhost:4000/create?text=${text}&id=${idFromText}&userId=${userId}&image=${downloadURL}`
+            //production: 
+           //  `https://myheroku-deployed-api.heroku.com`
+           )
+           .then(function(response){
+               console.log("response", response); 
+           })
+           .catch(function(error){
+               console.log(error);
+           });
+        });
+      }
+    );
+}
+
 if (loading) return null;
 
   return (
@@ -121,7 +164,7 @@ if (loading) return null;
       <Router>
 
         <Route exact path="/">
-         {!loggedIn ? <Redirect to="/login"/> : <Dashboard userInformation={userInformation}/>}
+         {!loggedIn ? <Redirect to="/login"/> : <Dashboard userInformation={userInformation} createPostWithImage={createPostWithImage}/>}
         </Route>
 
         <Route exact path="/post/:id">
@@ -140,13 +183,12 @@ if (loading) return null;
        {!loggedIn ? <Redirect to="/login"/> : <UserProfile userInformation={userInformation}/>}
        </Route>
 
-
       </Router>
 
 
     </div>
   );
-}
+  }
 
 export default App;
 
