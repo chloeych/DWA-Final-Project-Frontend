@@ -11,6 +11,7 @@ import Dashboard from  './pages/Dashboard.js';
 import Login from './pages/Login.js'; 
 import UserProfile from './pages/UserProfile.js';
 import SinglePost from './pages/SinglePost.js';
+import CreatePost from './pages/CreatePost.js';
 
 //import components 
 import Header from './components/Header.js';
@@ -127,6 +128,7 @@ function createPostWithImage(e){
 
 
     let text = e.currentTarget.postText.value; 
+    let image = e.currentTarget.postText.image;
     const idFromText = text.replace(/\s+/g, "-").toLowerCase().substr(0, 16);
     let userId = userInformation.uid;
 
@@ -135,6 +137,7 @@ function createPostWithImage(e){
       (snapshot) => {console.log("snapshot", snapshot)}, 
       (error) => {console.log(error);},
       () => {
+        
          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL){
            console.log("file available at", downloadURL)
 
@@ -151,6 +154,7 @@ function createPostWithImage(e){
            .catch(function(error){
                console.log(error);
            });
+
         });
       }
     );
@@ -181,6 +185,10 @@ if (loading) return null;
 
        <Route exact path="/user-profile">
        {!loggedIn ? <Redirect to="/login"/> : <UserProfile userInformation={userInformation}/>}
+       </Route>
+
+       <Route exact path="/createpost">
+       {!loggedIn ? <Redirect to="/login"/> : <CreatePost createPostWithImage={createPostWithImage}/>}
        </Route>
 
       </Router>

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios'; 
 
-//Components 
-import CreatePostForm from '../components/CreatePostForm.js';
 
 function Dashboard({ userInformation, createPostWithImage }) {
     console.log("userInformation", userInformation); 
@@ -55,18 +53,18 @@ function Dashboard({ userInformation, createPostWithImage }) {
 
     return(
         <div className="Wrapper">
-            <h1>Dashboard</h1>
             <p>Welcome, {email}</p>
-            <h2> All Posts </h2>
-            <div className="">
+            <div className="AllPosts">
              {allPosts.map((post, i) => (
                  <p key={i}>
-                     <a href={`/post/${post.id}`}>{post.text}</a> 
-                     </p>
+                     <div className="featureWrapper">
+                     <p>{email}</p> 
+                     <p><img className="postImage" src={post.image} alt={post.id}></img></p>
+                     <p>{post.text}</p>
+                     </div>
+                </p>
              ))}
             </div>
-            <h2>Create Post</h2>
-            <CreatePostForm CreatePostFunction={createPostWithImage}/>
         </div>
     );
 }

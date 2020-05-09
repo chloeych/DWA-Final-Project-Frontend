@@ -1,18 +1,20 @@
 import React from 'react'; 
+import logo from '../images/logo.png';
 
 function Header({LogoutFunction, isLoggedIn}){
     return(
         <header className="Header">
             <div className="headerWrapper">
-            <div className="headerLogo"> Logo </div>
-            <nav className="Header_nav">
-                {isLoggedIn && <a href="/">Dashboard</a>}
-                {!isLoggedIn && <a href="/create-account">Create Account</a>}
-                {!isLoggedIn && <a href="/login">Login</a>}
-                {isLoggedIn && <a href="/userprofile">Profile</a>}
-                {isLoggedIn && <a onClick={()=> LogoutFunction()}>Logout</a>}
-               
-            </nav>
+            <img className="headerLogo" src={logo} alt="logo"/>
+            <div className="Header_nav">
+                {isLoggedIn && <a href="/">DASHBOARD</a>}
+                {!isLoggedIn && <a href="/create-account">CREATE ACCOUNT</a>}
+                {!isLoggedIn && <a href="/login">LOGIN</a>}
+                {isLoggedIn && <a href="/userprofile">PROFILE</a>}
+                {isLoggedIn && <a href="/createpost">CREATE POST</a>}
+                {isLoggedIn && <a className="logoutBtn" onClick={()=> LogoutFunction()}>LOGOUT</a>}
+                <div class="underbar"></div>
+            </div>
             </div>
         </header>
     )

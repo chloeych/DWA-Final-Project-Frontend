@@ -1,34 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap');
+
 .App{
+    margin: 0 auto;
+    padding: 0 auto;
+    background-color: #01181D;
+    height: 100%;
 }
 
 .Wrapper{
-    max-width: 1040px; 
+    max-width: 900px; 
     margin: 0 auto; 
+    padding: 100px 0; 
 }
 
 .Header{
  width: 100%;
- border-bottom: 1px solid black;
+ position: fixed;
+ background-color: #000F12;
+ top: 0;
+ height: 80px;
+ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
+.headerLogo{
+    max-width: 120px;
+    top: 0;
+}
+
+
 .headerWrapper{
-    padding: 15px 25px; 
     max-width: 1040px; 
     margin: 0 auto; 
     justify-content: space-between;
     flex-direction: row; 
     align-items: center; 
     display: flex; 
+    
+}
 
+.Header_nav{
+    margin: 30px 25px;
 }
 
 .Header_nav a{
-    color: black;
+    color: #C4C4C4;
     text-decoration: none; 
     margin: 10px; 
-    padding: 0 5px; 
+    padding: 5px 10px; 
     font-weight: bold; 
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.Header_nav a:hover{
+  border-bottom: 1px solid transparent;
+  border-color: #C4C4C4;
+  transition: border-bottom 400ms ease;
 }
 
 .Header_Nav a:last-of-type {
@@ -48,7 +77,6 @@
     font-size: 12px;
     font-weight: bold;
     opacity: 0.6;
-
     
 }
 
@@ -82,5 +110,33 @@
 
 .LoginForm{
     max-width: 500px;
-    
 }
+
+.postImage{
+    width: 500px;
+}
+
+.featureWrapper{
+  margin: 0 auto; 
+  padding: 10px 25px;
+  display: block;
+  background-color: lightgrey;
+  align-content: center;
+  max-width: 500px;
+
+  border: #EBFF00;
+  border-width: 0.5px;
+  border-style: solid; 
+  
+}
+
+.logoutBtn{
+  border: #EBFF00;
+  border-width: 0.1px;
+  border-style: solid; 
+}
+
+
+.logoutBtn:hover{
+    cursor: pointer;
+  }
