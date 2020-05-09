@@ -53,14 +53,14 @@ function Dashboard({ userInformation, createPostWithImage }) {
 
     return(
         <div className="Wrapper">
-            <p>Welcome, {email}</p>
             <div className="AllPosts">
              {allPosts.map((post, i) => (
                  <p key={i}>
                      <div className="featureWrapper">
                      <p>{email}</p> 
                      <p><img className="postImage" src={post.image} alt={post.id}></img></p>
-                     <p>{post.text}</p>
+                     <p>{email}</p> 
+                     <p className="postBodyText">{post.text}</p>
                      </div>
                 </p>
              ))}
