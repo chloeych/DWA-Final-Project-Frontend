@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { Component, useEffect, useState } from 'react'; 
 import axios from 'axios'; 
 
 
@@ -28,6 +28,8 @@ function Dashboard({ userInformation }) {
 
 
     console.log(allPosts);
+    
+    
 
     return(
         <div className="Wrapper">
@@ -37,6 +39,7 @@ function Dashboard({ userInformation }) {
                      <div className="featureWrapper">
                      <p><img className="postImage" src={post.image} alt={post.id}></img></p>
                      <p className="postBodyText">{post.text}</p>
+                     
 
                      </div>
                 </div>
