@@ -10,7 +10,6 @@ import CreateAccount from './pages/CreateAccount.js';
 import Dashboard from  './pages/Dashboard.js'; 
 import Login from './pages/Login.js'; 
 import UserProfile from './pages/UserProfile.js';
-import SinglePost from './pages/SinglePost.js';
 import CreatePost from './pages/CreatePost.js';
 
 //import components 
@@ -98,12 +97,11 @@ useEffect(()=> {
 function CreateAccountFunction(e){
   e.preventDefault(); 
   console.log("form payload", e);  
-  let email = e.currentTarget.createEmail.value; 
-  let password = e.currentTarget.createPassword.value;
+  const email = e.currentTarget.createEmail.value; 
+  const password = e.currentTarget.createPassword.value;
 
   console.log('email', email); 
   console.log("password", password);
-
 
   firebase
     .auth()
@@ -114,6 +112,7 @@ function CreateAccountFunction(e){
      })
     .catch(function(e){
       console.log("CREATE ACCOUNT ERROR", e);
+      
      });
   }
 
@@ -160,6 +159,34 @@ function createPostWithImage(e){
     );
 }
 
+function updateProfileFunction(e){
+  e.preventDefault();
+  console.log("form payload", e);
+  let fName = e.currentTarget.fName.value;
+  let lName = e.currentTarget.lName.value;
+  let userId = userInformation.uid;
+  let bio = e.currentTarget.bio.value;
+  let activityLevel = e.currentTarget.activityLevel.value;
+  let age = e.currentTarget.age.value;
+  
+  const idFromText = userId.replace(/\s+/g, "-").toLowerCase().substr(0, 16);
+
+  axios  
+     .get(
+      //local:
+      `http://localhost:4000/updateProfile?firstName=${fName}&lastName=${lName}&age=${age}&activityLevel=${activityLevel}&bio=${bio}&id=${idFromText}`
+      //production: 
+      //  `https://myheroku-deployed-api.heroku.com`
+      )
+      .then(function(response){
+      console.log("response", response); 
+      })
+      .catch(function(error){
+       console.log(error);
+      });
+}
+
+
 if (loading) return null;
 
   return (
@@ -171,10 +198,6 @@ if (loading) return null;
          {!loggedIn ? <Redirect to="/login"/> : <Dashboard userInformation={userInformation} createPostWithImage={createPostWithImage}/>}
         </Route>
 
-        <Route exact path="/post/:id">
-         {!loggedIn ? <Redirect to="/login"/> : <SinglePost/>}
-        </Route>
-
         <Route exact path="/login">
         {!loggedIn ? (<Login LoginFunction={LoginFunction}/>) : (<Redirect to="/"/>)}
        </Route>
@@ -183,8 +206,8 @@ if (loading) return null;
        {!loggedIn ? (<CreateAccount CreateAccountFunction={CreateAccountFunction}/>) : (<Redirect to="/"/>)}
        </Route>
 
-       <Route exact path="/user-profile">
-       {!loggedIn ? <Redirect to="/login"/> : <UserProfile userInformation={userInformation}/>}
+       <Route exact path="/userprofile">
+       {!loggedIn ? <Redirect to="/login"/> : <UserProfile updateProfileFunction={updateProfileFunction} userInformation={userInformation}/>}
        </Route>
 
        <Route exact path="/createpost">

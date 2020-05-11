@@ -13,7 +13,7 @@ function Header({LogoutFunction, isLoggedIn}){
                 {isLoggedIn && <a href="/userprofile">PROFILE</a>}
                 {isLoggedIn && <a href="/createpost">CREATE POST</a>}
                 {isLoggedIn && <a className="logoutBtn" onClick={()=> LogoutFunction()}>LOGOUT</a>}
-                <div class="underbar"></div>
+               
             </div>
             </div>
         </header>

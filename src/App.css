@@ -14,12 +14,13 @@ html{
     margin: 0 auto;
     background-color: #01181D; 
 
+
 }
 
-.WrapperCreateAccount{
+.CreateAccount{
     max-width: 900px; 
-    margin: 0 auto; 
-    padding: 100px 0; 
+    margin: 100px auto; 
+
 }
 
 .Header{
@@ -31,8 +32,8 @@ html{
  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
-.Allposts{
-    margin: 100px 100px;
+.AllPosts{
+    margin: 150px auto;
 }
 
 .headerLogo{
@@ -73,6 +74,12 @@ html{
     border-bottom: 1px solid #EBFF00;
 }
 
+
+.Form{
+    color: #C4C4C4; 
+    font-style: normal;
+}
+
 .Form label{
     margin-bottom: 5px;
     font-size: 12px;
@@ -81,6 +88,15 @@ html{
 }
 
 .Form input{
+    width: 300px; 
+    height: 30px; 
+    font-size: 16px; 
+    margin-bottom: 20px;
+    border: none;  
+    font-family: 'Kameron';
+}
+
+textarea{
     padding: 10px 80px 10px 10px;
     font-size: 16px; 
     margin-bottom: 20px;
@@ -88,6 +104,7 @@ html{
     border: none;  
     color: #000E11;
     font-family: 'Kameron';
+    resize: none;
 }
 
 .Form button{
@@ -107,11 +124,6 @@ html{
 .Form button:hover{
     cursor: pointer; 
 
-}
-
-.Form{
-    color: #C4C4C4; 
-    font-style: normal;
 }
 
 .CreateWrapper{
@@ -155,14 +167,13 @@ html{
 }
 
 .featureWrapper{
-  margin: 0 auto; 
+  margin: 50px auto; 
   padding: 10px 25px;
   display: block;
   background-color: #c4c4c4;
   align-content: center;
   max-width: 500px;
   font-size: 14px;
-
   font-family: 'Encode Sans'
 }
 
@@ -182,6 +193,33 @@ html{
     background-color: #000F12;
     box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
 }
+
+.CreateUser{
+    font-family: "Kameron"; 
+    position: absolute; 
+    left: 40%;
+    margin-top: 170px;
+    padding: 40px 50px;
+    background-color: #000F12;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    color: #C4C4C4
+   
+}
+
+.CreateUser button{
+    font-size: 10px;
+    border: #EBFF00; 
+    border-width: 0.1px;
+    border-style: solid; 
+    background-color: #01181D;
+    font-family: "Kameron"; 
+    color: #C4C4C4;
+    text-transform: uppercase;
+    padding: 10px 40px; 
+    margin: 30px auto;
+   
+}
+
 
 .welcomePillar{
     font-family: "Open Sans Condensed"; 
@@ -215,7 +253,7 @@ html{
 }
 
 .CreatePostForm{
-    margin: 100px 250px;
+    margin: 100px 180px;
     font-family: "Kameron"; 
     color: #C4C4C4;
 }
@@ -227,18 +265,16 @@ html{
 }
 
 .CreatePostForm input{
-    width: 200px; 
+    width: 300px; 
     height: 30px; 
     font-size: 16px; 
     margin-bottom: 20px;
-    background-color: #C4C4C4;
     border: none;  
-    color: #000E11;
+    color: #C4C4C4;
     font-family: 'Kameron';
 }
 
 .CreatePostForm button{
-    padding: 8px 5px;
     font-size: 10px;
     border: #EBFF00; 
     border-width: 0.1px;
@@ -247,11 +283,15 @@ html{
     font-family: "Kameron"; 
     color: #C4C4C4;
     text-transform: uppercase;
-    margin: auto 70px;
     padding: 10px 40px; 
 }
 
 .CreatePostForm button:hover{
     cursor: pointer; 
 
+}
+
+.popup-content{
+   background-color: #000F12 !important;
+   border: none !important;
 }

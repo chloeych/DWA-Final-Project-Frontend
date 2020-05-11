@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'; 
 
 
-function Dashboard({ userInformation, createPostWithImage }) {
+function Dashboard({ userInformation }) {
     console.log("userInformation", userInformation); 
     const [allPosts, setAllPosts] = useState([]);
     const email = userInformation.email; 
@@ -26,28 +26,6 @@ function Dashboard({ userInformation, createPostWithImage }) {
 
     }, []);
 
-    // Create a Post 
-    async function CreatePostFunction(e){
-        e.preventDefault();
-        let text = e.currentTarget.postText.value; 
-        const idFromText = text.replace(/\s+/g, "-").toLowerCase().substr(0, 16);
-        let userId = uid;
-
-        axios  
-        .get(
-         //local:
-         `http://localhost:4000/create?text=${text}&id=${idFromText}&userId=${userId}`
-         //production: 
-        //  `https://myheroku-deployed-api.heroku.com`
-        )
-        .then(function(response){
-            console.log('response', response); 
-        })
-        .catch(function(error){
-            console.log(error);
-        });
-    }
-
 
     console.log(allPosts);
 
@@ -55,14 +33,13 @@ function Dashboard({ userInformation, createPostWithImage }) {
         <div className="Wrapper">
             <div className="AllPosts">
              {allPosts.map((post, i) => (
-                 <p key={i}>
+                 <div key={i}>
                      <div className="featureWrapper">
-                     <p>{email}</p> 
                      <p><img className="postImage" src={post.image} alt={post.id}></img></p>
-                     <p>{email}</p> 
                      <p className="postBodyText">{post.text}</p>
+
                      </div>
-                </p>
+                </div>
              ))}
             </div>
         </div>

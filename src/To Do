@@ -1,15 +1,17 @@
 Front-End To Do: 
 
-- Reformat Dashboard Page so that posts and image text align similarly 
-
 - Change ‘email’ to username
 
 - In the sign up forms include First and Last name which then passes through to dashboard where it says hello {Chloe}
-
-- Handle CSS of all landing pages 
 
 - See if you can add likes to the posts 
 
 - See if you can add comments to the post 
 
+- Allow multiple lines of text to be passed through
+
 - Add a page of your own posts in profile? IDK IF THIS WILL WORK. 
+
+- Create a wrapper around the sign in page / better styling
+
+- Success message after creating a post 

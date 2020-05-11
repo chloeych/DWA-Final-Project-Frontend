@@ -4,7 +4,7 @@ import CreateAccountForm from "../components/CreateAccountForm";
 
 function CreateAccount({CreateAccountFunction}) {
     return(
-        <div className="WrapperCreateAccount">
+        <div className="Wrapper CreateAccount">
             <p className="welcomePillar">WELCOME TO PILLAR.</p>
             <div className="CreateWrapper">
             <CreateAccountForm CreateAccountFunction={CreateAccountFunction}/>
