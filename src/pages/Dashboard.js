@@ -11,10 +11,7 @@ function Dashboard({ userInformation }) {
     useEffect(() => {
         axios  
             .get(
-             //local:
-             `http://localhost:4000/`
-             //production: 
-            //  `https://myheroku-deployed-api.heroku.com`
+             `https://safe-shore-20320.herokuapp.com/`
             )
             .then(function(response){
                 console.log("response", response.data)

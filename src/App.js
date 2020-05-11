@@ -143,7 +143,7 @@ function createPostWithImage(e){
            axios  
            .get(
             //local:
-            `http://localhost:4000/create?text=${text}&id=${idFromText}&userId=${userId}&image=${downloadURL}`
+            `https://safe-shore-20320.herokuapp.com/create?text=${text}&id=${idFromText}&userId=${userId}&image=${downloadURL}`
             //production: 
            //  `https://myheroku-deployed-api.heroku.com`
            )
@@ -174,7 +174,7 @@ function updateProfileFunction(e){
   axios  
      .get(
       //local:
-      `http://localhost:4000/updateProfile?firstName=${fName}&lastName=${lName}&age=${age}&activityLevel=${activityLevel}&bio=${bio}&id=${idFromText}`
+      `https://safe-shore-20320.herokuapp.com/updateProfile?firstName=${fName}&lastName=${lName}&age=${age}&activityLevel=${activityLevel}&bio=${bio}&id=${idFromText}`
       //production: 
       //  `https://myheroku-deployed-api.heroku.com`
       )
